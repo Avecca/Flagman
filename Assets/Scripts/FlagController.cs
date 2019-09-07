@@ -6,23 +6,31 @@ public class FlagController : MonoBehaviour
 {
 
     //1 flag 4 positions
-
+    //TODO GÖMM saker från inspectorn
 
     [SerializeField]
     private List<Transform> flagPosition = new List<Transform>();
     public int currentFlagPos = 0;
+   // public int lastFlagPos = 0;
     int nrFlagsShown = 0;
-    int maxNrFlagsToShow = 5;
+    public int maxNrFlagsToShow = 5; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
 
     float flagDelay = 2.0f;
 
     //int maxNrFlagPositions = 4;
     System.Random rand;
 
+    //Håll reda på din egen flagcontroller, så vi kan lägga till rand numnret i listan över sequencen
+    public FlagOrganizer flagOrganizer;
+
 
     // Start is called before the first frame update
     void Start()
     {
+       // flagOrganizer.UpdateNextRoundBool(false);
+
+        //empty old flaglist
+        flagOrganizer.EmptyFlagNumberList();
 
         pickRandomFlagPosition();
 
@@ -48,8 +56,17 @@ public class FlagController : MonoBehaviour
 
         if (nrFlagsShown >= maxNrFlagsToShow)
         {
-            
+
+            yield return new WaitForSeconds(flagDelay);
             DestroyJumper();
+
+
+            Debug.Log("ENDING ROUND !!!!!!");
+            flagOrganizer.UpdateNextRoundBool(true);
+
+          
+
+            
 
         }
 
@@ -103,6 +120,7 @@ public class FlagController : MonoBehaviour
         transform.position = flagPosition[currentFlagPos].position;
 
         //TODO Spara vilken flagga som visades i flaglistan
+        flagOrganizer.UpdateFlagList(currentFlagPos);
         
 
     }
