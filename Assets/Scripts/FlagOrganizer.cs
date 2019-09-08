@@ -13,28 +13,32 @@ public class FlagOrganizer : MonoBehaviour
     [SerializeField]
     GameObject flagPrefab;
 
-    //list of all the positions the flag has been in, make private
-    public List<int> flagNumberList = new List<int>();
+    ////list of all the positions the flag has been in, make private
+    //public List<int> flagNumberList = new List<int>();
+
+    GameManager gameManager;
 
 
 
     int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
-    int turn = 1;
+   // int turn = 1;
     //int nrFlagsShown = 0;
    // int lastFlagPos = 0;
 
     float flagDelay = 2.0f;
 
 
+    //TODO samma som turn?
+    public int nrFlagsToStart = 1;
 
 
 
     //BOOL för flagga nästa round
 
     bool nextRound = false;
-    bool doneGuessing = false;
+    //bool doneGuessing = false;
 
-    bool GameOver = false;
+   // bool gameOver = false;
 
 
 
@@ -52,8 +56,10 @@ public class FlagOrganizer : MonoBehaviour
             return;
         }
 
+        gameManager = GetComponent<GameManager>();
+
         //maybe fetch gamemanager (handle points?)
-        maxNrFlagsToShowThisRound = 1;
+        maxNrFlagsToShowThisRound = nrFlagsToStart;
 
         StartFlag();
 
@@ -65,7 +71,7 @@ public class FlagOrganizer : MonoBehaviour
     {
 
         Debug.Log("Starting new round !!!");
-        while (!GameOver)  //TODO !GameOver
+        while (!gameManager.GetGameOver())  //TODO !GameOver
         {
 
 
@@ -78,11 +84,12 @@ public class FlagOrganizer : MonoBehaviour
 
             // if (nextRound)
             // {
-            // yield return new WaitUntil(() => doneGuessing == true);
+             yield return new WaitUntil(() => gameManager.GetDoneGuessing() == true);
 
+           
 
             // TODO ändra detta till doneguessing
-            yield return new WaitUntil(() => nextRound == true);
+            //yield return new WaitUntil(() => nextRound == true);
 
                // yield return new WaitForSeconds(5.0f);
             Debug.Log(nextRound + " is the nextround");
@@ -137,15 +144,16 @@ public class FlagOrganizer : MonoBehaviour
     public void UpdateFlagList(int nr)
     {
 
-        flagNumberList.Add(nr);
+        gameManager.flagNumberList.Add(nr);
 
         
     }
 
-    public void EmptyFlagNumberList()
+    public void NewRoundStart()
     {
 
-        flagNumberList.Clear();
+
+        gameManager.StartNewRound();
 
     }
 
@@ -154,6 +162,9 @@ public class FlagOrganizer : MonoBehaviour
 
         Debug.Log("Updateboolean to :" + roundStatus);
         nextRound = roundStatus;
+
+        Debug.Log("DONEGUESSING = FALSE");
+        gameManager.SetDoneGuessing(false);
     }
 
     //TODO här eller i Flagcontroller

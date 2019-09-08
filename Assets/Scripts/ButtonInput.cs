@@ -86,9 +86,11 @@ public class ButtonInput : MonoBehaviour
     {
         //Debug.Log("Inne i  btnPressed");
 
+        //TODO ändra till switch case
+
         if (btnOne != null && hit.collider != null && hit.collider.tag == "btnOne") //hit.collider.gameObject.name="LeftInput"" //taggar inputsen
         {
-            //Debug.Log("BtnOne pressed");
+           //Debug.Log("BtnOne pressed");
             btnOne();
 
         }
@@ -106,7 +108,7 @@ public class ButtonInput : MonoBehaviour
         }
         else if (btnFour != null && hit.collider != null && hit.collider.tag == "btnFour")
         {
-            //Debug.Log("BtnFour pressed");
+        //    Debug.Log("BtnFour pressed");
             btnFour();
 
         }

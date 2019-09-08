@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ public class FlagController : MonoBehaviour
        // flagOrganizer.UpdateNextRoundBool(false);
 
         //empty old flaglist
-        flagOrganizer.EmptyFlagNumberList();
+        flagOrganizer.NewRoundStart();
 
         pickRandomFlagPosition();
 
@@ -58,11 +59,13 @@ public class FlagController : MonoBehaviour
         {
 
             yield return new WaitForSeconds(flagDelay);
-            DestroyJumper();
+            DestroyFlag();
 
 
-            Debug.Log("ENDING ROUND !!!!!!");
-            flagOrganizer.UpdateNextRoundBool(true);
+            Debug.Log("LAST FLAG SHOWN, ENDING FLAG ROUND");
+            flagOrganizer.UpdateNextRoundBool(true);  //TODO BEHÖVS DENNA
+
+            //TODO VISA KNAPPARNA
 
           
 
@@ -117,6 +120,11 @@ public class FlagController : MonoBehaviour
 
         Debug.Log("Nr flags show: " + nrFlagsShown);
 
+        SpriteRenderer spriteRenderer = GetComponent < SpriteRenderer>();
+        spriteRenderer.color = ColorPicker();
+
+        
+
         transform.position = flagPosition[currentFlagPos].position;
 
         //TODO Spara vilken flagga som visades i flaglistan
@@ -125,7 +133,25 @@ public class FlagController : MonoBehaviour
 
     }
 
-    private void DestroyJumper()
+    private Color ColorPicker()
+    {
+        switch (currentFlagPos)
+        {
+
+            case 0:
+                return Color.yellow;
+            case 1:
+                return Color.green;
+            case 2:
+                return Color.blue;
+            case 3:
+                return Color.red;
+            default:
+                return Color.cyan;
+        }
+    }
+
+    private void DestroyFlag()
     {
 
        // Debug.Log("Trying to remove flag");
