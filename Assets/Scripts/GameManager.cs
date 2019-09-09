@@ -15,6 +15,13 @@ public class GameManager : MonoBehaviour
 
     //göm och visa input knapparna
 
+
+        //TODO PRINT WHICH ROUND NUMBER
+        //TODO ADD SOUND
+        //TODO HIDE AND SHOW INPUT BTNS
+        //TODO LIVES
+        //TODO ANIMATIONS BETWEEN ROUNDS
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +32,11 @@ public class GameManager : MonoBehaviour
         guessController = GetComponent<GuessController>();
 
         
+    }
+
+    public void ResetFlagRound()
+    {
+        flagOrganizer.ResetMaxNrFlagsToShowThisRoundTo(1);
     }
 
     public void StartNewRound()

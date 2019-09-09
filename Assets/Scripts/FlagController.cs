@@ -31,7 +31,7 @@ public class FlagController : MonoBehaviour
        // flagOrganizer.UpdateNextRoundBool(false);
 
         //empty old flaglist
-        flagOrganizer.NewRoundStart();
+        flagOrganizer.NewRoundStartClear();
 
         pickRandomFlagPosition();
 

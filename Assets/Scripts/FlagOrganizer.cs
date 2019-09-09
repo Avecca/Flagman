@@ -19,8 +19,7 @@ public class FlagOrganizer : MonoBehaviour
     GameManager gameManager;
 
 
-
-    int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
+   private int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
    // int turn = 1;
     //int nrFlagsShown = 0;
    // int lastFlagPos = 0;
@@ -28,7 +27,7 @@ public class FlagOrganizer : MonoBehaviour
     float flagDelay = 2.0f;
 
 
-    //TODO samma som turn?
+    //TODO samma som turn?  TA Bort när allt funkar?
     public int nrFlagsToStart = 1;
 
 
@@ -149,12 +148,17 @@ public class FlagOrganizer : MonoBehaviour
         
     }
 
-    public void NewRoundStart()
+    public void NewRoundStartClear()
     {
 
 
         gameManager.StartNewRound();
 
+    }
+
+    public void ResetMaxNrFlagsToShowThisRoundTo(int number)
+    {
+        maxNrFlagsToShowThisRound = number;
     }
 
     public void UpdateNextRoundBool(bool roundStatus)

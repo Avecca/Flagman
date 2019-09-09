@@ -130,7 +130,7 @@ public class GuessController : MonoBehaviour
             //Just in case something goes wrong
             Debug.Log("Inga fler att gissa på");
 
-            EndGuessing();
+            EndGuessingRound();
         }
 
 
@@ -148,7 +148,7 @@ public class GuessController : MonoBehaviour
 
         if (nrGuessesDone >= gameManager.flagNumberList.Count)
         {
-            StartCoroutine( EndGuessing());
+            StartCoroutine( EndGuessingRound() );
         }
 
 
@@ -160,16 +160,20 @@ public class GuessController : MonoBehaviour
         Debug.Log("Gissade fel!!");
 
         //TODO FÖRLORA LIVE OCH SE OM GAME OVER FÖRST SEN
+
+
         //TODO FLAGORGANIZER nrFlagsToStart = 1; SÅ börjar gissa om från 1
 
+        gameManager.ResetFlagRound();
 
-        
-        // EndGuessing();
+
+        StartCoroutine(EndGuessingRound());
+
         //TODO Gissningen blev fel, avsluta/mindre liv
         //gameManager.SetDoneGuessing(true);
     }
 
-    IEnumerator EndGuessing()
+    IEnumerator EndGuessingRound()
     {
 
         Debug.Log("ENDING ROUND");
