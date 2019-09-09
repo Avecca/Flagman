@@ -9,10 +9,14 @@ public class GuessController : MonoBehaviour
 
 
     //TODO EMpty after each round
+    //TODO Remove, does nothing
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
-    float endRoundDelay = 5.0f;
+    float endRoundDelay = 3.0f;
+
+
+
 
 
     //private int guessNr = 0;
@@ -41,14 +45,8 @@ public class GuessController : MonoBehaviour
     {
         gameManager = GetComponent<GameManager>();
 
-        //UpdatePosition();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
 
     // Prenumererade events
@@ -162,9 +160,9 @@ public class GuessController : MonoBehaviour
         //TODO FÖRLORA LIVE OCH SE OM GAME OVER FÖRST SEN
 
 
-        //TODO FLAGORGANIZER nrFlagsToStart = 1; SÅ börjar gissa om från 1
-
-        gameManager.ResetFlagRound();
+        
+        //restart ROUND, next round has to have the same amount of flags
+        gameManager.BacktrackFlagRound();
 
 
         StartCoroutine(EndGuessingRound());
@@ -178,6 +176,10 @@ public class GuessController : MonoBehaviour
 
         Debug.Log("ENDING ROUND");
         //TODO INSTA Ta bort knapparna
+        Debug.Log("END guessing round, HIDE buttons");
+        gameManager.SetInputVisiblity(false);
+
+
 
         //reset guesses for next round
         RemoveAllGuesses();
@@ -208,14 +210,8 @@ public class GuessController : MonoBehaviour
 
         foreach (int g in guesses)
         {
-            Debug.Log("All the guesses: " + g);
+           // Debug.Log("All the guesses: " + g);
         }
     }
 
-    private void UpdatePosition()
-    {
-
-        //TODOcurrentpositon + 1 för att highlighta nästa tomma siffra
-       // transform.position = positions[currentPosition].position;
-    }
 }

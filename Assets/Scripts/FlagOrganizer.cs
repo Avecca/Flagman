@@ -19,16 +19,20 @@ public class FlagOrganizer : MonoBehaviour
     GameManager gameManager;
 
 
+    //TODO MAKE PRIVATE
    private int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
-   // int turn = 1;
+
+
+
+    // int turn = 1;
     //int nrFlagsShown = 0;
-   // int lastFlagPos = 0;
+    // int lastFlagPos = 0;
 
     float flagDelay = 2.0f;
 
 
     //TODO samma som turn?  TA Bort när allt funkar?
-    public int nrFlagsToStart = 1;
+    private int nrFlagsToStart = 1;
 
 
 
@@ -37,12 +41,20 @@ public class FlagOrganizer : MonoBehaviour
     bool nextRound = false;
     //bool doneGuessing = false;
 
-   // bool gameOver = false;
+    // bool gameOver = false;
 
 
 
+    public int MaxNrFlagsToShowThisRound
+    {
+        get
+        {
+            return maxNrFlagsToShowThisRound;
+        }
+    }
 
-    
+
+
 
 
     // Start is called before the first frame update
@@ -156,19 +168,36 @@ public class FlagOrganizer : MonoBehaviour
 
     }
 
-    public void ResetMaxNrFlagsToShowThisRoundTo(int number)
+    public void ResetMaxNrCFlagsToShowThisRoundTo()
     {
-        maxNrFlagsToShowThisRound = number;
+        if (maxNrFlagsToShowThisRound > 1)
+        {
+            maxNrFlagsToShowThisRound--;
+        }
+        
     }
 
     public void UpdateNextRoundBool(bool roundStatus)
     {
 
+
+        //At the start of each Flaground so more than 2 doesnt start
         Debug.Log("Updateboolean to :" + roundStatus);
         nextRound = roundStatus;
 
         Debug.Log("DONEGUESSING = FALSE");
+        //stop the flags
         gameManager.SetDoneGuessing(false);
+
+    }
+
+    public void StartGuessingRound(bool status)
+    {
+        nextRound = status;
+        //gameManager.StartGuessingRound();
+        Debug.Log("Start guessing round, see buttons");
+        gameManager.SetInputVisiblity(true);
+
     }
 
     //TODO här eller i Flagcontroller

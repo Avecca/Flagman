@@ -63,8 +63,8 @@ public class FlagController : MonoBehaviour
 
 
             Debug.Log("LAST FLAG SHOWN, ENDING FLAG ROUND");
-            flagOrganizer.UpdateNextRoundBool(true);  //TODO BEHÖVS DENNA
-
+            flagOrganizer.StartGuessingRound(true);  //TODO BEHÖVS DENNA
+            //UpdateNextRoundBool
             //TODO VISA KNAPPARNA
 
           
