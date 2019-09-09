@@ -13,16 +13,10 @@ public class FlagOrganizer : MonoBehaviour
     [SerializeField]
     GameObject flagPrefab;
 
-    ////list of all the positions the flag has been in, make private
-    //public List<int> flagNumberList = new List<int>();
-
     GameManager gameManager;
-
 
     //TODO MAKE PRIVATE
    private int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
-
-
 
     // int turn = 1;
     //int nrFlagsShown = 0;
@@ -34,15 +28,8 @@ public class FlagOrganizer : MonoBehaviour
     //TODO samma som turn?  TA Bort när allt funkar?
     private int nrFlagsToStart = 1;
 
-
-
     //BOOL för flagga nästa round
-
     bool nextRound = false;
-    //bool doneGuessing = false;
-
-    // bool gameOver = false;
-
 
 
     public int MaxNrFlagsToShowThisRound
@@ -52,10 +39,6 @@ public class FlagOrganizer : MonoBehaviour
             return maxNrFlagsToShowThisRound;
         }
     }
-
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -85,9 +68,6 @@ public class FlagOrganizer : MonoBehaviour
         while (!gameManager.GetGameOver())  //TODO !GameOver
         {
 
-
-
-
             // while (nextRound && maxNrFlagsToShowThisRound <= turn)
             // {
             //   turn++;
@@ -96,8 +76,6 @@ public class FlagOrganizer : MonoBehaviour
             // if (nextRound)
             // {
              yield return new WaitUntil(() => gameManager.GetDoneGuessing() == true);
-
-           
 
             // TODO ändra detta till doneguessing
             //yield return new WaitUntil(() => nextRound == true);
@@ -112,7 +90,6 @@ public class FlagOrganizer : MonoBehaviour
             //}
 
         }
-        
     }
 
     // Update is called once per frame
@@ -125,9 +102,6 @@ public class FlagOrganizer : MonoBehaviour
         //maxNrFlagsToShowThisRound++;
 
     }
-
-
-
 
     private void StartFlag()
     {
@@ -148,24 +122,16 @@ public class FlagOrganizer : MonoBehaviour
 
         maxNrFlagsToShowThisRound++;
 
-
-
     }
 
     public void UpdateFlagList(int nr)
     {
-
         gameManager.flagNumberList.Add(nr);
-
-        
     }
 
     public void NewRoundStartClear()
     {
-
-
         gameManager.StartNewRound();
-
     }
 
     public void ResetMaxNrCFlagsToShowThisRoundTo()
@@ -173,22 +139,18 @@ public class FlagOrganizer : MonoBehaviour
         if (maxNrFlagsToShowThisRound > 1)
         {
             maxNrFlagsToShowThisRound--;
-        }
-        
+        } 
     }
 
     public void UpdateNextRoundBool(bool roundStatus)
     {
-
 
         //At the start of each Flaground so more than 2 doesnt start
         Debug.Log("Updateboolean to :" + roundStatus);
         nextRound = roundStatus;
 
         Debug.Log("DONEGUESSING = FALSE");
-        //stop the flags
         gameManager.SetDoneGuessing(false);
-
     }
 
     public void StartGuessingRound(bool status)

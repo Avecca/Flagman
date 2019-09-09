@@ -8,23 +8,22 @@ public class GameManager : MonoBehaviour
 
     FlagOrganizer flagOrganizer;
     GuessController guessController;
-    //list of all the positions the flag has been in, make private
+    //TODO list of all the positions the flag has been in, make private
     public List<int> flagNumberList = new List<int>();
 
     private bool gameOver = false;
     private bool doneGuessing = false;
 
-    //göm och visa input knapparna
+    //Hide and show Input buttons
     //defined through inspector
-    // public GameObject inputBtns;
     public GameObject input;
 
 
     //TODO PRINT WHICH ROUND NUMBER
     //TODO ADD SOUND
-    //TODO HIDE AND SHOW INPUT BTNS
     //TODO LIVES
     //TODO ANIMATIONS BETWEEN ROUNDS
+    //TODO C# GetterSetters fix
 
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
 
@@ -60,7 +59,7 @@ public class GameManager : MonoBehaviour
         flagOrganizer = GetComponent<FlagOrganizer>();
         guessController = GetComponent<GuessController>();
 
-        Debug.Log("HIDE BTNS");
+        //Debug.Log("HIDE BTNS");
         input.SetActive(false);
 
 
@@ -87,12 +86,6 @@ public class GameManager : MonoBehaviour
     {
         flagNumberList.Clear();
         guessController.ResetNrGuesses();
-
-
-
-        //TODO doneGuessing = false;
-
-        //TODO göm knapparna
     }
 
 

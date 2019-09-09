@@ -7,17 +7,12 @@ public class GuessController : MonoBehaviour
 {
     GameManager gameManager;
 
-
     //TODO EMpty after each round
     //TODO Remove, does nothing
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
     float endRoundDelay = 3.0f;
-
-
-
-
 
     //private int guessNr = 0;
 
@@ -39,62 +34,38 @@ public class GuessController : MonoBehaviour
         ButtonInput.btnFour -= OnFourPressed;
     }
 
-
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GetComponent<GameManager>();
-
     }
-
 
 
     // Prenumererade events
 
     public void OnOnePressed()
     {
-
         Debug.Log("BtnOne pressed in guess");
-
-        /* if (currentPosition > 0)
-         {
-             currentPosition--;
-             UpdatePosition();
-         }*/
-
-
         //The index start at 0 not 1
-        CheckGuess(0);
-         
+        CheckGuess(0); 
     }
 
     public void OnTwoPressed()
     {
         Debug.Log("Btntwo pressed in guess");
-
-        /* if (currentPosition < positions.Count - 1)
-         {
-             currentPosition++;
-             UpdatePosition();
-         }*/
         CheckGuess(1);
     }
-
 
     public void OnThreePressed()
     {
         Debug.Log("BtnThree pressed in guess");
         CheckGuess(2);
-
     }
-
 
     public void OnFourPressed()
     {
         Debug.Log("BtnFour pressed in guess");
         CheckGuess(3);
-
-
     }
 
     public void ResetNrGuesses()
@@ -105,22 +76,17 @@ public class GuessController : MonoBehaviour
     private void CheckGuess(int guess)
     {
 
-        Debug.Log("Guessing Done, guess = " + guess + " listcount = " + gameManager.flagNumberList.Count);
+       // Debug.Log("Guessing Done, guess = " + guess + " listcount = " + gameManager.flagNumberList.Count);
 
         if (gameManager.flagNumberList.Count > nrGuessesDone)
         {
-
             if (gameManager.flagNumberList[nrGuessesDone] == guess)
             {
-
                 GuessedRight(guess);
-
-
             }
             else
             {
                 GuessedWrong();
-
             }
         }
         else
@@ -130,12 +96,7 @@ public class GuessController : MonoBehaviour
 
             EndGuessingRound();
         }
-
-
-
     }
-
-
 
     private void GuessedRight(int guess)
     {
@@ -149,18 +110,14 @@ public class GuessController : MonoBehaviour
             StartCoroutine( EndGuessingRound() );
         }
 
-
-
         // DidRoundEnd();
     }
     private void GuessedWrong()
     {
         Debug.Log("Gissade fel!!");
 
-        //TODO FÖRLORA LIVE OCH SE OM GAME OVER FÖRST SEN
+        //TODO FÖRLORA LIV OCH SE OM GAME OVER FÖRST SEN
 
-
-        
         //restart ROUND, next round has to have the same amount of flags
         gameManager.BacktrackFlagRound();
 
@@ -168,18 +125,14 @@ public class GuessController : MonoBehaviour
         StartCoroutine(EndGuessingRound());
 
         //TODO Gissningen blev fel, avsluta/mindre liv
-        //gameManager.SetDoneGuessing(true);
     }
 
     IEnumerator EndGuessingRound()
     {
-
-        Debug.Log("ENDING ROUND");
+       // Debug.Log("ENDING ROUND");
         //TODO INSTA Ta bort knapparna
         Debug.Log("END guessing round, HIDE buttons");
         gameManager.SetInputVisiblity(false);
-
-
 
         //reset guesses for next round
         RemoveAllGuesses();
@@ -189,13 +142,9 @@ public class GuessController : MonoBehaviour
 
         if (!gameManager.GetGameOver())
         {
-
-
             gameManager.SetDoneGuessing(true);
 
-
         }
-
     }
 
     private void RemoveAllGuesses()
@@ -205,13 +154,12 @@ public class GuessController : MonoBehaviour
 
     private void AddGuess(int guess)
     {
-
         guesses.Add(guess);
 
-        foreach (int g in guesses)
-        {
-           // Debug.Log("All the guesses: " + g);
-        }
+        //foreach (int g in guesses)
+        //{
+        //   // Debug.Log("All the guesses: " + g);
+        //}
     }
 
 }
