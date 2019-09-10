@@ -7,6 +7,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
 
+    //Game manager connects the flaground with the guessinground the rounds and restarting after guessing
+
     FlagOrganizer flagOrganizer;
     GuessController guessController;
     //Hide and show Input buttons
@@ -22,9 +24,6 @@ public class GameManager : MonoBehaviour
     private bool doneGuessing = false;
 
 
-
-
-    //TODO PRINT WHICH ROUND NUMBER
     //TODO ADD SOUND
     //TODO LIVES
     //TODO ANIMATIONS BETWEEN ROUNDS
@@ -94,10 +93,10 @@ public class GameManager : MonoBehaviour
     //    //For display,
     //    //as soon as a round starts this increases so to show the right nr
     //    //show one less
-    //    return flagOrganizer.GetMaxNrFlagsToShowThisRound() -1;
+    //    return flagOrganizer.MaxNrFlagsToShowThisRound -1;
     //}
 
-    public void UpDateRoundNr(int round)
+    public void UpDateRoundNrDisplay(int round)
     {
         if (round > 0)
         {

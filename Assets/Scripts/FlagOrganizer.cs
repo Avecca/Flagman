@@ -8,7 +8,7 @@ public class FlagOrganizer : MonoBehaviour
 
     // 1 round of showing the flag 5 times(Flagcontroller handles the 5 showings)
 
-        //Game manager handles the points and restarting after guessing
+    //Game manager connects the flaground with the guessinground the rounds and restarting after guessing
 
     [SerializeField]
     GameObject flagPrefab;
@@ -16,7 +16,7 @@ public class FlagOrganizer : MonoBehaviour
     GameManager gameManager;
 
     //TODO MAKE PRIVATE
-   private int maxNrFlagsToShowThisRound; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
+   private int maxNrFlagsToShowThisRound; 
 
     // int turn = 1;
     //int nrFlagsShown = 0;
@@ -109,7 +109,7 @@ public class FlagOrganizer : MonoBehaviour
         //Tell the flagcontroller how many flags to show this round
         flag.GetComponent<FlagController>().maxNrFlagsToShow = maxNrFlagsToShowThisRound;
 
-        gameManager.UpDateRoundNr(maxNrFlagsToShowThisRound);
+        gameManager.UpDateRoundNrDisplay(maxNrFlagsToShowThisRound);
 
         maxNrFlagsToShowThisRound++;
 
@@ -133,11 +133,6 @@ public class FlagOrganizer : MonoBehaviour
         } 
     }
 
-    public int GetMaxNrFlagsToShowThisRound()
-    {
-
-        return maxNrFlagsToShowThisRound;
-    }
 
     public void UpdateNextRoundBool(bool roundStatus)
     {

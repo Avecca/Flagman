@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GuessController : MonoBehaviour
 {
+    //Handles the guessing round
+
     GameManager gameManager;
 
     //TODO EMpty after each round
