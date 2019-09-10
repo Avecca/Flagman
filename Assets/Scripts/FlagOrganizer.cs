@@ -92,17 +92,6 @@ public class FlagOrganizer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-
-    void Update()
-    {
-        
-
-        //TODOIF Finished round and finished guessing restart the flag here
-        //maxNrFlagsToShowThisRound++;
-
-    }
-
     private void StartFlag()
     {
 
@@ -119,6 +108,8 @@ public class FlagOrganizer : MonoBehaviour
 
         //Tell the flagcontroller how many flags to show this round
         flag.GetComponent<FlagController>().maxNrFlagsToShow = maxNrFlagsToShowThisRound;
+
+        gameManager.UpDateRoundNr(maxNrFlagsToShowThisRound);
 
         maxNrFlagsToShowThisRound++;
 
@@ -140,6 +131,12 @@ public class FlagOrganizer : MonoBehaviour
         {
             maxNrFlagsToShowThisRound--;
         } 
+    }
+
+    public int GetMaxNrFlagsToShowThisRound()
+    {
+
+        return maxNrFlagsToShowThisRound;
     }
 
     public void UpdateNextRoundBool(bool roundStatus)
