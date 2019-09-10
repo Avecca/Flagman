@@ -14,7 +14,7 @@ public class GuessController : MonoBehaviour
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
-    float endRoundDelay = 3.0f;
+    float endRoundDelay = 2.5f;
 
     //private int guessNr = 0;
 
@@ -39,6 +39,7 @@ public class GuessController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //TODO If check here
         gameManager = GetComponent<GameManager>();
     }
 
@@ -121,7 +122,7 @@ public class GuessController : MonoBehaviour
         //TODO FÖRLORA LIV OCH SE OM GAME OVER FÖRST SEN
 
         //restart ROUND, next round has to have the same amount of flags
-        gameManager.BacktrackFlagRound();
+        gameManager.WrongGuessConsequences();  //TODO Rename LooseALife
 
 
         StartCoroutine(EndGuessingRound());
