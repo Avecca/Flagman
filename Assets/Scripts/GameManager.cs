@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     //Game manager connects the flaground with the guessinground the rounds and restarting after guessing
 
+    private string sceneName = "Main";
 
     //Under the same "item" Dino 
     FlagOrganizer flagOrganizer;
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     public LivesController livesController;
     //Hide and show Input buttons
     public GameObject input;
+    public GameObject gameOverSign;
     public TextMeshPro roundTxt;
 
     //TODO list of all the positions the flag has been in, make private
@@ -28,10 +31,10 @@ public class GameManager : MonoBehaviour
     private bool doneGuessing = false;
 
 
-    //TODO ADD SOUND
-    //TODO Game over popup
+    //TODO ADD SOUND, click, fel gissning, victory sound, game over
     //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy
     //TODO C# GetterSetters fix
+    //TODO LoadScreen for startgame? Pre Start GameScreen
 
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
 
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
 
         //Debug.Log("HIDE BTNS");
         input.SetActive(false);
+        gameOverSign.SetActive(false);
 
     }
 
@@ -116,7 +120,14 @@ public class GameManager : MonoBehaviour
         gameOver = true;
         //GAME OVER
 
-        //TODO Game Over popup
+        //Game Over popup
+        gameOverSign.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        //recall the "Main" scene
+        SceneManager.LoadScene(sceneName);
     }
 
 

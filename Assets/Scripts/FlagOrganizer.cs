@@ -22,7 +22,7 @@ public class FlagOrganizer : MonoBehaviour
     //int nrFlagsShown = 0;
     // int lastFlagPos = 0;
 
-    float flagDelay = 2.0f;
+   // float flagDelay = 1.8f;
 
 
     //TODO samma som turn?  TA Bort när allt funkar?

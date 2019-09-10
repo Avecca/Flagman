@@ -14,7 +14,7 @@ public class GuessController : MonoBehaviour
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
-    float endRoundDelay = 2.5f;
+    float endRoundDelay = 2.0f;
 
     //private int guessNr = 0;
 

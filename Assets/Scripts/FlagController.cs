@@ -15,7 +15,7 @@ public class FlagController : MonoBehaviour
     int nrFlagsShown = 0;
     public int maxNrFlagsToShow = 5; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
 
-    float flagDelay = 2.0f;
+    float flagDelay = 1.8f;
 
     //int maxNrFlagPositions = 4;
     System.Random rand;
