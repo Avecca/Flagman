@@ -48,47 +48,40 @@ public class SoundManager : MonoBehaviour
         PlaySound();
     }
 
-
     private void OnTwoPressed()
     {
         audioSource.clip = btnClick;
         PlaySound();
-
     }
 
     private void OnOnePressed()
     {
         audioSource.clip = btnClick;
         PlaySound();
-
     }
 
     public void PlayRoar()
     {
         audioSource.clip = roarSound;
         PlaySound();
-
     }
 
     public void PlayGameOverSound()
     {
         audioSource.clip = gameOverSound;
         PlaySound();
-
     }
 
     public void PlaySuccessfullRoundSound()
     {
         audioSource.clip = madeItSound;
         PlaySound();
-
     }
 
     public void PlayWrongGuessSound()
     {
         audioSource.clip = wrongGuessSound;
         PlaySound();
-
     }
 
     private void PlaySound() {

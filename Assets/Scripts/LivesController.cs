@@ -48,12 +48,11 @@ public class LivesController : MonoBehaviour
         }
     }
 
-
     //If no lives = game over
     public bool StillAlive()
     {
-        //No more lives left to loos and it's game over
-        if (lives.Count < 1)
+        //No more lives left to loose and it's game over
+        if (lives.Count < 1) //<= 1 if not using a last life
         {
             //not alive
             return false;

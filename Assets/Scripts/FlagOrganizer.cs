@@ -24,20 +24,15 @@ public class FlagOrganizer : MonoBehaviour
 
    // float flagDelay = 1.8f;
 
-
     //TODO samma som turn?  TA Bort när allt funkar?
     private int nrFlagsToStart = 1;
 
     //BOOL för flagga nästa round, TA BORT !!
     bool nextRound = false;
 
-
     public int MaxNrFlagsToShowThisRound
     {
-        get
-        {
-            return maxNrFlagsToShowThisRound;
-        }
+        get { return maxNrFlagsToShowThisRound; }
     }
 
     // Start is called before the first frame update
@@ -57,15 +52,14 @@ public class FlagOrganizer : MonoBehaviour
 
         StartFlag();
 
-        StartCoroutine(PickNextFlag());
-        
+        StartCoroutine(PickNextFlag());   
     }
 
     IEnumerator PickNextFlag()
     {
 
         Debug.Log("Starting new round !!!");
-        while (!gameManager.GetGameOver())  //TODO !GameOver
+        while (!gameManager.GameOver)  //TODO !GameOver GetGameOver()
         {
 
             // while (nextRound && maxNrFlagsToShowThisRound <= turn)
@@ -75,12 +69,12 @@ public class FlagOrganizer : MonoBehaviour
 
             // if (nextRound)
             // {
-             yield return new WaitUntil(() => gameManager.GetDoneGuessing() == true);
+             yield return new WaitUntil(() => gameManager.DoneGuessing == true);  //GetDoneGuessing()
 
             // TODO ändra detta till doneguessing
             //yield return new WaitUntil(() => nextRound == true);
 
-               // yield return new WaitForSeconds(5.0f);
+            // yield return new WaitForSeconds(5.0f);
             Debug.Log(nextRound + " is the nextround");
 
                 //TODO ändra detta till wautintil
@@ -88,7 +82,6 @@ public class FlagOrganizer : MonoBehaviour
             StartFlag();
            // }
             //}
-
         }
     }
 
@@ -112,7 +105,6 @@ public class FlagOrganizer : MonoBehaviour
         gameManager.UpDateRoundNrDisplay(maxNrFlagsToShowThisRound);
 
         maxNrFlagsToShowThisRound++;
-
     }
 
     public void UpdateFlagList(int nr)
@@ -143,7 +135,7 @@ public class FlagOrganizer : MonoBehaviour
 
         Debug.Log("DONEGUESSING = FALSE");
         //new round, not done guessing
-        gameManager.SetDoneGuessing(roundStatus);  //false
+        gameManager.DoneGuessing = roundStatus;  //false SetDoneGuessing(roundStatus)
     }
 
     public void EnableGuessing(bool status)
@@ -152,7 +144,6 @@ public class FlagOrganizer : MonoBehaviour
         //gameManager.StartGuessingRound();
         Debug.Log("Start guessing round, see buttons");
         gameManager.SetInputVisiblity(status);  //true
-
     }
 
     //TODO här eller i Flagcontroller

@@ -63,13 +63,10 @@ public class FlagController : MonoBehaviour
         }    
     }
 
-
     private void ShowNextFlag()
     {
         //generate new position for the flag
         pickRandomFlagPosition();
-
-        //TODO if visat tillräckligt många flaggor redan
 
         ShowFlag();
     }
@@ -91,7 +88,6 @@ public class FlagController : MonoBehaviour
 
         }
         currentFlagPos = r;
-
     }
 
     private void ShowFlag()
@@ -107,7 +103,6 @@ public class FlagController : MonoBehaviour
 
         //TODO Spara vilken flagga som visades i flaglistan
         flagOrganizer.UpdateFlagList(currentFlagPos);
-
     }
 
     private Color ColorPicker()
@@ -136,13 +131,11 @@ public class FlagController : MonoBehaviour
 
         //gameObject.SetActive(false);
 
-
         Destroy(gameObject);
         //TODO Destoy så det inte ligger massa flaggor kvar
         //GameObject flag = transform.parent.gameObject;
         //Debug.Log(flag);
         //Destroy(flag);
     }
-
 
 }

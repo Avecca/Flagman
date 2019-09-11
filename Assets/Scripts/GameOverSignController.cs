@@ -9,7 +9,6 @@ public class GameOverSignController : MonoBehaviour
 
     //Dont forget to connect through the Inspector and through a boxcollider
 
-
 #if (UNITY_IOS || UNITY_ANDROID)
 
     private void Update()

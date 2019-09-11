@@ -9,8 +9,7 @@ public class GuessController : MonoBehaviour
 
     GameManager gameManager;
 
-    //TODO EMpty after each round
-    //TODO Remove, does nothing
+    //TODO Remove, does nothing, for inspector
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
@@ -42,8 +41,6 @@ public class GuessController : MonoBehaviour
         //TODO If check here
         gameManager = GetComponent<GameManager>();
     }
-
-
     // Prenumererade events
 
     public void OnOnePressed()
@@ -141,9 +138,9 @@ public class GuessController : MonoBehaviour
 
         yield return new WaitForSeconds(endRoundDelay);
 
-        if (!gameManager.GetGameOver())
+        if (!gameManager.GameOver) //GetGameOver()
         {
-            gameManager.SetDoneGuessing(true);
+            gameManager.DoneGuessing = true;  //SetDoneGuessing(true)
 
         }
     }

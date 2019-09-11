@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverSign;
     public TextMeshPro roundTxt;
     
-
     //TODO list of all the positions the flag has been in, make private
     public List<int> flagNumberList = new List<int>();
 
@@ -33,30 +32,22 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     private bool doneGuessing = false;
 
-
+    //TODO Siffror, background, knappar och grafiska flaggor
     //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy, ljud fixar detta?
-    //TODO C# GetterSetters fix
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
+    //TODO säkerhet if sound !exist osv
 
-    public bool GetGameOver()
+
+    public bool GameOver
     {
-        return gameOver;
+        get { return this.gameOver; }
+        set { this.gameOver = value; }
     }
 
-    public void SetGameOver(bool value)
+    public bool DoneGuessing
     {
-        gameOver = value;
-    }
-
-    public bool GetDoneGuessing()
-    {
-        return doneGuessing;
-    }
-
-    public void SetDoneGuessing(bool value)
-    {
-
-        doneGuessing = value;
+        get { return this.doneGuessing; }
+        set { this.doneGuessing = value; }
     }
 
     // Start is called before the first frame update
@@ -73,15 +64,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("HIDE BTNS");
         input.SetActive(false);
         gameOverSign.SetActive(false);
-
     }
-
-    //internal void StartGuessingRound()
-    //{
-
-    //    Debug.Log("Start guessing round, see buttons");
-    //    input.SetActive(true);
-    //}
 
     public void StartNewRound()
     {
@@ -101,7 +84,7 @@ public class GameManager : MonoBehaviour
         //Loose a life, check if game over
         if (!livesController.StillAlive())
         {
-            GameOver();
+            GameIsOver();
         }
         else
         {
@@ -123,10 +106,11 @@ public class GameManager : MonoBehaviour
         }   
     }
 
-    private void GameOver()
+    private void GameIsOver()
     {
         Debug.Log("GAME OVER");
-        gameOver = true;
+        //gameOver = true;
+        GameOver = true;
         //GAME OVER
 
         //sound
@@ -144,6 +128,13 @@ public class GameManager : MonoBehaviour
     }
 
 
+    //internal void StartGuessingRound()
+    //{
+
+    //    Debug.Log("Start guessing round, see buttons");
+    //    input.SetActive(true);
+    //}
+
 
     //public int GetROundNr()
     //{
@@ -151,6 +142,27 @@ public class GameManager : MonoBehaviour
     //    //as soon as a round starts this increases so to show the right nr
     //    //show one less
     //    return flagOrganizer.MaxNrFlagsToShowThisRound -1;
+    //}
+
+    //public bool GetDoneGuessing()
+    //{
+    //    return doneGuessing;
+    //}
+
+    //public void SetDoneGuessing(bool value)
+    //{
+
+    //    doneGuessing = value;
+    //}
+
+    //public bool GetGameOver()
+    //{
+    //    return gameOver;
+    //}
+
+    //public void SetGameOver(bool value)
+    //{
+    //    gameOver = value;
     //}
 
 

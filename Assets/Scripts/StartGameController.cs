@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class StartGameController : MonoBehaviour
 {
-
-
     private string sceneName = "Main";
     // Start is called before the first frame update
     void Start()
@@ -30,7 +28,6 @@ public class StartGameController : MonoBehaviour
                     StartGame();
                 }
             }
-
         }
     }
 
@@ -52,7 +49,6 @@ public class StartGameController : MonoBehaviour
     }
 
 #endif
-
 
     public void StartGame()
     {

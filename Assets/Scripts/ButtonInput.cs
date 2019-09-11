@@ -14,11 +14,8 @@ public class ButtonInput : MonoBehaviour
         btnFour
     }
 
-    //public bool left;   använd enum istället
-
     [HideInInspector]
     public Button button;
-
 
     // btn events
     public delegate void ButtonPressed();
@@ -26,7 +23,6 @@ public class ButtonInput : MonoBehaviour
     public static event ButtonPressed btnTwo;
     public static event ButtonPressed btnThree;
     public static event ButtonPressed btnFour;
-
 
     //säg åt compilatorn att viss kod körs på vissa enheter
     //koden kan bli enhets specifik
