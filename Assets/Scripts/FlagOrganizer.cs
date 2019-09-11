@@ -28,7 +28,7 @@ public class FlagOrganizer : MonoBehaviour
     //TODO samma som turn?  TA Bort när allt funkar?
     private int nrFlagsToStart = 1;
 
-    //BOOL för flagga nästa round
+    //BOOL för flagga nästa round, TA BORT !!
     bool nextRound = false;
 
 

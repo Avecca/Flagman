@@ -18,10 +18,12 @@ public class GameManager : MonoBehaviour
 
     //seperate entitys, connect through inspector
     public LivesController livesController;
+    public SoundManager soundManager;
     //Hide and show Input buttons
     public GameObject input;
     public GameObject gameOverSign;
     public TextMeshPro roundTxt;
+    
 
     //TODO list of all the positions the flag has been in, make private
     public List<int> flagNumberList = new List<int>();
@@ -31,8 +33,7 @@ public class GameManager : MonoBehaviour
     private bool doneGuessing = false;
 
 
-    //TODO ADD SOUND, click, fel gissning, victory sound, game over
-    //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy
+    //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy, ljud fixar detta?
     //TODO C# GetterSetters fix
     //TODO LoadScreen for startgame? Pre Start GameScreen
 
@@ -103,6 +104,15 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+        else
+        {
+            soundManager.PlayWrongGuessSound();
+        }
+    }
+
+    internal void SuccessfullRoundConsequences()
+    {
+        soundManager.PlaySuccessfullRoundSound();
     }
 
     public void UpDateRoundNrDisplay(int round)
@@ -119,6 +129,10 @@ public class GameManager : MonoBehaviour
         Debug.Log("GAME OVER");
         gameOver = true;
         //GAME OVER
+
+        //sound
+        soundManager.PlayGameOverSound();
+       
 
         //Game Over popup
         gameOverSign.SetActive(true);

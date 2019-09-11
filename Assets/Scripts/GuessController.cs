@@ -110,6 +110,7 @@ public class GuessController : MonoBehaviour
 
         if (nrGuessesDone >= gameManager.flagNumberList.Count)
         {
+            gameManager.SuccessfullRoundConsequences();
             StartCoroutine( EndGuessingRound() );
         }
 
@@ -119,22 +120,19 @@ public class GuessController : MonoBehaviour
     {
         Debug.Log("Gissade fel!!");
 
-        //TODO FÖRLORA LIV OCH SE OM GAME OVER FÖRST SEN
-
+        //If not game over loose a life
         //restart ROUND, next round has to have the same amount of flags
-        gameManager.WrongGuessConsequences();  //TODO Rename LooseALife
-
+        gameManager.WrongGuessConsequences();  //TODO Rename LooseALife?
 
         StartCoroutine(EndGuessingRound());
-
-        //TODO Gissningen blev fel, avsluta/mindre liv
     }
 
     IEnumerator EndGuessingRound()
     {
        // Debug.Log("ENDING ROUND");
-        //TODO INSTA Ta bort knapparna
+        
         Debug.Log("END guessing round, HIDE buttons");
+        // INSTA Ta bort knapparna
         gameManager.SetInputVisiblity(false);
 
         //reset guesses for next round
