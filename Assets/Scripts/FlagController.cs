@@ -53,18 +53,15 @@ public class FlagController : MonoBehaviour
 
         if (nrFlagsShown >= maxNrFlagsToShow)
         {
-
             yield return new WaitForSeconds(flagDelay);
             DestroyFlag();
 
-
             Debug.Log("LAST FLAG SHOWN, ENDING FLAG ROUND");
             //guessing round, show btns and so on
-            flagOrganizer.StartGuessingRound(true);          
+            flagOrganizer.EnableGuessing(true);          
 
         }    
     }
-
 
 
     private void ShowNextFlag()

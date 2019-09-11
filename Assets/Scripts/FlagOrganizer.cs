@@ -94,8 +94,8 @@ public class FlagOrganizer : MonoBehaviour
 
     private void StartFlag()
     {
-
-        UpdateNextRoundBool(false);
+        //disable guessing while flaground
+        UpdateGuessingStatus(false);
         //Debug.Log("StartFlag called");
 
         GameObject flag = Instantiate(flagPrefab);
@@ -134,7 +134,7 @@ public class FlagOrganizer : MonoBehaviour
     }
 
 
-    public void UpdateNextRoundBool(bool roundStatus)
+    public void UpdateGuessingStatus(bool roundStatus)
     {
 
         //At the start of each Flaground so more than 2 doesnt start
@@ -142,15 +142,16 @@ public class FlagOrganizer : MonoBehaviour
         nextRound = roundStatus;
 
         Debug.Log("DONEGUESSING = FALSE");
-        gameManager.SetDoneGuessing(false);
+        //new round, not done guessing
+        gameManager.SetDoneGuessing(roundStatus);  //false
     }
 
-    public void StartGuessingRound(bool status)
+    public void EnableGuessing(bool status)
     {
         nextRound = status;
         //gameManager.StartGuessingRound();
         Debug.Log("Start guessing round, see buttons");
-        gameManager.SetInputVisiblity(true);
+        gameManager.SetInputVisiblity(status);  //true
 
     }
 

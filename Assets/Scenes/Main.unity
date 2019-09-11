@@ -250,6 +250,7 @@ MonoBehaviour:
   gameOverSound: {fileID: 8300000, guid: a235229cf2d6d46098454fef72a41b84, type: 3}
   madeItSound: {fileID: 8300000, guid: b5872ae6b12534101a29048105ebd2ee, type: 3}
   wrongGuessSound: {fileID: 8300000, guid: 8f52ad61714084ed5963c43b9e70e678, type: 3}
+  roarSound: {fileID: 0}
 --- !u!4 &101694637
 Transform:
   m_ObjectHideFlags: 0
@@ -925,7 +926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1289536083}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

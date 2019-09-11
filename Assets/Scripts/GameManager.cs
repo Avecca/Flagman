@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     //Game manager connects the flaground with the guessinground the rounds and restarting after guessing
 
+    //private string sceneName = "StartGame";
     private string sceneName = "Main";
 
     //Under the same "item" Dino 
@@ -35,8 +36,6 @@ public class GameManager : MonoBehaviour
 
     //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy, ljud fixar detta?
     //TODO C# GetterSetters fix
-    //TODO LoadScreen for startgame? Pre Start GameScreen
-
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
 
     public bool GetGameOver()
