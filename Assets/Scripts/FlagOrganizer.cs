@@ -91,6 +91,8 @@ public class FlagOrganizer : MonoBehaviour
         UpdateGuessingStatus(false);
         //Debug.Log("StartFlag called");
 
+
+        //Bättre att ha statiska som lyses upp i en sequence än att skapa o döda
         GameObject flag = Instantiate(flagPrefab);
         //flag.GetComponent<FlagController>().lastFlagPos = lastFlagPos;
         //nrFlagsShown++;

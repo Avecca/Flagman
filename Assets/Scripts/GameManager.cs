@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
 
     //Game manager connects the flaground with the guessinground the rounds and restarting after guessing
 
-    //private string sceneName = "StartGame";
-    private string sceneName = "Main";
+    private string sceneName = "Start";
+    //private string sceneName = "Main";
 
     //Under the same "item" Dino 
     FlagOrganizer flagOrganizer;
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy, ljud fixar detta?
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
     //TODO säkerhet if sound !exist osv
+    //http://icons8.com 
 
 
     public bool GameOver

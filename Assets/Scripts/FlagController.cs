@@ -24,6 +24,11 @@ public class FlagController : MonoBehaviour
     public FlagOrganizer flagOrganizer;
 
 
+    public Sprite flag1Sprite;
+    public Sprite flag2Sprite;
+    public Sprite flag3Sprite;
+    public Sprite flag4Sprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,8 +101,9 @@ public class FlagController : MonoBehaviour
 
         Debug.Log("Nr flags show: " + nrFlagsShown);
 
-        SpriteRenderer spriteRenderer = GetComponent < SpriteRenderer>();
-        spriteRenderer.color = ColorPicker();
+        SpriteRenderer spriteRenderer = GetComponent <SpriteRenderer>();
+        // spriteRenderer.color = ColorPicker();
+        spriteRenderer.sprite = SpritePicker();  //(Sprite)Resources.Load("Sprites/YellowBtn1");
 
         transform.position = flagPosition[currentFlagPos].position;
 
@@ -105,23 +111,41 @@ public class FlagController : MonoBehaviour
         flagOrganizer.UpdateFlagList(currentFlagPos);
     }
 
-    private Color ColorPicker()
+    private Sprite SpritePicker()
     {
         switch (currentFlagPos)
         {
 
             case 0:
-                return Color.yellow;
+                return flag1Sprite;
             case 1:
-                return Color.green;
+                return flag2Sprite;
             case 2:
-                return Color.blue;
+                return flag3Sprite;
             case 3:
-                return Color.red;
+                return flag4Sprite;
             default:
-                return Color.cyan;
+                return flag1Sprite;
         }
     }
+
+    //private Color ColorPicker()
+    //{
+    //    switch (currentFlagPos)
+    //    {
+
+    //        case 0:
+    //            return Color.yellow;
+    //        case 1:
+    //            return Color.green;
+    //        case 2:
+    //            return Color.blue;
+    //        case 3:
+    //            return Color.red;
+    //        default:
+    //            return Color.cyan;
+    //    }
+    //}
 
     private void DestroyFlag()
     {

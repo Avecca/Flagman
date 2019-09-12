@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91393114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1400, y: -1810, z: -0.5436612}
+  m_LocalPosition: {x: 1400, y: -1500, z: -0.5436612}
   m_LocalScale: {x: 4.01116, y: 4.28158, z: 1}
   m_Children: []
   m_Father: {fileID: 838162666}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682533016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1400, y: -1810, z: 0}
+  m_LocalPosition: {x: -1400, y: -1500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 838162666}
@@ -151,7 +151,7 @@ Transform:
   m_GameObject: {fileID: 1863548510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 35, y: 20, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 978261760719729269}
   m_RootOrder: 0
@@ -176,6 +176,10 @@ MonoBehaviour:
   currentFlagPos: 0
   maxNrFlagsToShow: 5
   flagOrganizer: {fileID: 0}
+  flag1Sprite: {fileID: 21300000, guid: 24490e717e01f48a197559a606070727, type: 3}
+  flag2Sprite: {fileID: 21300000, guid: ab7f3f762921c4700934216063e0dfc7, type: 3}
+  flag3Sprite: {fileID: 21300000, guid: 1d459b9d3da4f44a1b014f8f60f06cef, type: 3}
+  flag4Sprite: {fileID: 21300000, guid: cd204940a8b7d49818ec91044a571baf, type: 3}
 --- !u!212 &6646972599797394870
 SpriteRenderer:
   m_ObjectHideFlags: 0
