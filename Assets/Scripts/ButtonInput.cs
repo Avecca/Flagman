@@ -57,7 +57,6 @@ public class ButtonInput : MonoBehaviour
           }
     }
 
-
 #elif UNITY_EDITOR
 
 
@@ -75,6 +74,24 @@ public class ButtonInput : MonoBehaviour
 
         }
     }
+
+#else
+
+        private void Update()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            //Debug.Log("Mouse touch world pos");
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+            btnPressed(hit);
+
+        }
+    }
+
 
 #endif
 

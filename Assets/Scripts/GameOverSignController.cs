@@ -45,6 +45,21 @@ public class GameOverSignController : MonoBehaviour
            }
         }
     }
+#elif UNITY_STANDALONE_OSX
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+           Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+           RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
+
+           if (hit.collider != null && hit.collider.gameObject.name == "GameOver")
+           {
+              RestartGame();
+           }
+        }
+    }
 
 #endif
 
@@ -54,4 +69,5 @@ public class GameOverSignController : MonoBehaviour
         //Debug.Log("Restart Game");
         gameManager.RestartGame();
     }
+
 }

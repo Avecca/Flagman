@@ -27,6 +27,10 @@ public class StartGameController : MonoBehaviour
                 {
                     StartGame();
                 }
+                else if (hit.collider != null && hit.collider.gameObject.name == "ButtonQuit")
+                {
+                    ExitGame();
+                }
             }
         }
     }
@@ -44,6 +48,30 @@ public class StartGameController : MonoBehaviour
            if (hit.collider != null && hit.collider.gameObject.name == "StartGame")
            {
               StartGame();
+            }
+            else if (hit.collider != null && hit.collider.gameObject.name == "ButtonQuit")
+            {
+                ExitGame();
+            }
+        }
+    }
+
+#elif UNITY_STANDALONE_OSX
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+           Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+           RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero); 
+
+           if (hit.collider != null && hit.collider.gameObject.name == "StartGame")
+           {
+              StartGame();
+           }
+           else if (hit.collider != null && hit.collider.gameObject.name == "ButtonQuit")
+           {
+               ExitGame();
            }
         }
     }
@@ -54,5 +82,13 @@ public class StartGameController : MonoBehaviour
     {
         //Call the "Main" scene
         SceneManager.LoadScene(sceneName);
+    }
+
+    //TODO implementera knapp
+    private void ExitGame()
+    {
+
+        Debug.Log("Quitting Game!");
+        Application.Quit();
     }
 }
