@@ -5,7 +5,6 @@ using UnityEngine;
 public class ButtonInput : MonoBehaviour
 {
 
-   
     public enum Button
     {
         btnOne,
@@ -59,7 +58,6 @@ public class ButtonInput : MonoBehaviour
 
 #elif UNITY_EDITOR
 
-
     private void Update()
     {
 
@@ -75,9 +73,9 @@ public class ButtonInput : MonoBehaviour
         }
     }
 
-#else
+#elif UNITY_STANDALONE_OSX
 
-        private void Update()
+    private void Update()
     {
 
         if (Input.GetMouseButtonDown(0))
@@ -105,26 +103,21 @@ public class ButtonInput : MonoBehaviour
         {
            //Debug.Log("BtnOne pressed");
             btnOne();
-
         }
         else if (btnTwo != null && hit.collider != null && hit.collider.tag == "btnTwo")
         {
             //Debug.Log("Btntwo pressed");
             btnTwo();
-
         }
         else if (btnThree != null && hit.collider != null && hit.collider.tag == "btnThree")
         {
             //Debug.Log("BtnThree pressed");
             btnThree();
-
         }
         else if (btnFour != null && hit.collider != null && hit.collider.tag == "btnFour")
         {
         //    Debug.Log("BtnFour pressed");
             btnFour();
-
         }
-
     }
 }

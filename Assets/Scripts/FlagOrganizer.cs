@@ -16,19 +16,9 @@ public class FlagOrganizer : MonoBehaviour
     GameManager gameManager;
 
     //TODO MAKE PRIVATE
-   private int maxNrFlagsToShowThisRound; 
+    private int maxNrFlagsToShowThisRound;
 
-    // int turn = 1;
-    //int nrFlagsShown = 0;
-    // int lastFlagPos = 0;
-
-   // float flagDelay = 1.8f;
-
-    //TODO samma som turn?  TA Bort när allt funkar?
     private int nrFlagsToStart = 1;
-
-    //BOOL för flagga nästa round, TA BORT !!
-    bool nextRound = false;
 
     public int MaxNrFlagsToShowThisRound
     {
@@ -57,31 +47,11 @@ public class FlagOrganizer : MonoBehaviour
 
     IEnumerator PickNextFlag()
     {
-
-        Debug.Log("Starting new round !!!");
-        while (!gameManager.GameOver)  //TODO !GameOver GetGameOver()
+       // Debug.Log("Starting new round !!!");
+        while (!gameManager.GameOver)  // !GameOver GetGameOver()
         {
-
-            // while (nextRound && maxNrFlagsToShowThisRound <= turn)
-            // {
-            //   turn++;
-            //yield return new WaitUntil(() => doneGuessing == true);
-
-            // if (nextRound)
-            // {
-             yield return new WaitUntil(() => gameManager.DoneGuessing == true);  //GetDoneGuessing()
-
-            // TODO ändra detta till doneguessing
-            //yield return new WaitUntil(() => nextRound == true);
-
-            // yield return new WaitForSeconds(5.0f);
-            Debug.Log(nextRound + " is the nextround");
-
-                //TODO ändra detta till wautintil
-                //yield return new WaitForSeconds(5.0f);
+            yield return new WaitUntil(() => gameManager.DoneGuessing == true);  //GetDoneGuessing()
             StartFlag();
-           // }
-            //}
         }
     }
 
@@ -90,7 +60,6 @@ public class FlagOrganizer : MonoBehaviour
         //disable guessing while flaground
         UpdateGuessingStatus(false);
         //Debug.Log("StartFlag called");
-
 
         //Bättre att ha statiska som lyses upp i en sequence än att skapa o döda
         GameObject flag = Instantiate(flagPrefab);
@@ -127,26 +96,41 @@ public class FlagOrganizer : MonoBehaviour
         } 
     }
 
-
     public void UpdateGuessingStatus(bool roundStatus)
     {
-
-        //At the start of each Flaground so more than 2 doesnt start
-        Debug.Log("Updateboolean to :" + roundStatus);
-        nextRound = roundStatus;
-
-        Debug.Log("DONEGUESSING = FALSE");
+       // Debug.Log("DONEGUESSING = FALSE");
         //new round, not done guessing
         gameManager.DoneGuessing = roundStatus;  //false SetDoneGuessing(roundStatus)
     }
 
     public void EnableGuessing(bool status)
     {
-        nextRound = status;
         //gameManager.StartGuessingRound();
-        Debug.Log("Start guessing round, see buttons");
+        //Debug.Log("Start guessing round, see buttons");
         gameManager.SetInputVisiblity(status);  //true
     }
+
+    #region NotUsedIdeas
+
+
+    // while (nextRound && maxNrFlagsToShowThisRound <= turn)
+    // {
+    //   turn++;
+    //yield return new WaitUntil(() => doneGuessing == true);
+
+    // if (nextRound)
+    // {
+
+
+    // TODO ändra detta till doneguessing
+    //yield return new WaitUntil(() => nextRound == true);
+
+    // yield return new WaitForSeconds(5.0f);
+    // Debug.Log(nextRound + " is the nextround");
+
+    //TODO ändra detta till wautintil
+    //yield return new WaitForSeconds(5.0f);
+
 
     //TODO här eller i Flagcontroller
     //IEnumerator PickNextFlag()
@@ -173,6 +157,6 @@ public class FlagOrganizer : MonoBehaviour
 
 
     //}
-
+    #endregion
 
 }

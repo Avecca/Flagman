@@ -9,13 +9,11 @@ public class GuessController : MonoBehaviour
 
     GameManager gameManager;
 
-    //TODO Remove, does nothing, for inspector
+    //TODO Remove, does nothing, for inspector only
     public List<int> guesses = new List<int>();
     private int nrGuessesDone = 0;
 
     float endRoundDelay = 2.0f;
-
-    //private int guessNr = 0;
 
     // prenumerera på eventen från ButtonInput
     private void OnEnable()
@@ -92,7 +90,7 @@ public class GuessController : MonoBehaviour
         else
         {
             //Just in case something goes wrong
-            Debug.Log("Inga fler att gissa på");
+           // Debug.Log("Inga fler att gissa på");
 
             EndGuessingRound();
         }
@@ -103,7 +101,7 @@ public class GuessController : MonoBehaviour
         AddGuess(guess);
         nrGuessesDone++;
 
-        Debug.Log("Gissade rätt!!");
+       // Debug.Log("Gissade rätt!!");
 
         if (nrGuessesDone >= gameManager.flagNumberList.Count)
         {
@@ -115,7 +113,7 @@ public class GuessController : MonoBehaviour
     }
     private void GuessedWrong()
     {
-        Debug.Log("Gissade fel!!");
+       // Debug.Log("Gissade fel!!");
 
         //If not game over loose a life
         //restart ROUND, next round has to have the same amount of flags
@@ -126,15 +124,11 @@ public class GuessController : MonoBehaviour
 
     IEnumerator EndGuessingRound()
     {
-       // Debug.Log("ENDING ROUND");
-        
-        Debug.Log("END guessing round, HIDE buttons");
-        // INSTA Ta bort knapparna
+        //Debug.Log("END guessing round, HIDE buttons");
+        // INSTA remove buttons
         gameManager.SetInputVisiblity(false);
-
         //reset guesses for next round
         RemoveAllGuesses();
-
 
         yield return new WaitForSeconds(endRoundDelay);
 

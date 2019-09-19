@@ -28,16 +28,11 @@ public class GameManager : MonoBehaviour
     //TODO list of all the positions the flag has been in, make private
     public List<int> flagNumberList = new List<int>();
 
-    //TODO SET private
-    public bool gameOver = false;
+    private bool gameOver = false;
     private bool doneGuessing = false;
 
-    //TODO Siffror, background, knappar och grafiska flaggor
-    //TODO ANIMATIONS BETWEEN ROUNDS, wrong guess thingy, ljud fixar detta?
     //TODO bryta ut guesses ur GC O GÖR GUESSORGANIZER
-    //TODO säkerhet if sound !exist osv
-    //http://icons8.com 
-
+    //TODO säkerhet if sound !exist osv 
 
     public bool GameOver
     {
@@ -103,21 +98,15 @@ public class GameManager : MonoBehaviour
         if (round > 0)
         {
             roundTxt.text = round.ToString();
-
         }   
     }
 
     private void GameIsOver()
     {
-        Debug.Log("GAME OVER");
-        //gameOver = true;
+        //Debug.Log("GAME OVER");
         GameOver = true;
-        //GAME OVER
-
         //sound
         soundManager.PlayGameOverSound();
-       
-
         //Game Over popup
         gameOverSign.SetActive(true);
     }
@@ -127,44 +116,5 @@ public class GameManager : MonoBehaviour
         //recall the "Main" scene
         SceneManager.LoadScene(sceneName);
     }
-
-
-    //internal void StartGuessingRound()
-    //{
-
-    //    Debug.Log("Start guessing round, see buttons");
-    //    input.SetActive(true);
-    //}
-
-
-    //public int GetROundNr()
-    //{
-    //    //For display,
-    //    //as soon as a round starts this increases so to show the right nr
-    //    //show one less
-    //    return flagOrganizer.MaxNrFlagsToShowThisRound -1;
-    //}
-
-    //public bool GetDoneGuessing()
-    //{
-    //    return doneGuessing;
-    //}
-
-    //public void SetDoneGuessing(bool value)
-    //{
-
-    //    doneGuessing = value;
-    //}
-
-    //public bool GetGameOver()
-    //{
-    //    return gameOver;
-    //}
-
-    //public void SetGameOver(bool value)
-    //{
-    //    gameOver = value;
-    //}
-
 
 }

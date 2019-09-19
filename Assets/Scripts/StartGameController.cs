@@ -84,11 +84,8 @@ public class StartGameController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    //TODO implementera knapp
     private void ExitGame()
-    {
-
-        Debug.Log("Quitting Game!");
+    { // Debug.Log("Quitting Game!");
         Application.Quit();
     }
 }

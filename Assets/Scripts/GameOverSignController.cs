@@ -63,7 +63,6 @@ public class GameOverSignController : MonoBehaviour
 
 #endif
 
-
     private void RestartGame()
     {
         //Debug.Log("Restart Game");

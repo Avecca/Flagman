@@ -16,13 +16,10 @@ public class FlagController : MonoBehaviour
     public int maxNrFlagsToShow = 5; //TODO Flagorganiser sätter detta, så 1 2 -3 osv
 
     float flagDelay = 1.8f;
-
-    //int maxNrFlagPositions = 4;
     System.Random rand;
 
     //Håll reda på din egen flagcontroller, så vi kan lägga till rand numnret i listan över sequencen
     public FlagOrganizer flagOrganizer;
-
 
     public Sprite flag1Sprite;
     public Sprite flag2Sprite;
@@ -38,12 +35,10 @@ public class FlagController : MonoBehaviour
         flagOrganizer.NewRoundStartClear();
 
         pickRandomFlagPosition();
-
         //show the first flag
         ShowFlag();
 
         StartCoroutine(PickNextFlag());
-        
     }
 
     IEnumerator PickNextFlag()
@@ -54,17 +49,14 @@ public class FlagController : MonoBehaviour
             ShowNextFlag();
         }
 
-        //TODO Gör så sista flaggan inte syns, ie döda
-
         if (nrFlagsShown >= maxNrFlagsToShow)
         {
             yield return new WaitForSeconds(flagDelay);
             DestroyFlag();
 
-            Debug.Log("LAST FLAG SHOWN, ENDING FLAG ROUND");
+           // Debug.Log("LAST FLAG SHOWN, ENDING FLAG ROUND");
             //guessing round, show btns and so on
             flagOrganizer.EnableGuessing(true);          
-
         }    
     }
 
@@ -82,15 +74,14 @@ public class FlagController : MonoBehaviour
         rand = new System.Random();
 
         int r = rand.Next(0, flagPosition.Count);
-        Debug.Log("Random blev: " + r);
+        //Debug.Log("Random blev: " + r);
 
         //Cant move to the same position as last time unless it's the first time
         while (r == currentFlagPos && nrFlagsShown > 0)
         {
-            Debug.Log("GENERATING NEW RANDOM BCS DUPLICATE");
+           // Debug.Log("GENERATING NEW RANDOM BCS DUPLICATE");
             r = rand.Next(0, flagPosition.Count);
-            Debug.Log("New Random blev: " + r);
-
+            //Debug.Log("New Random blev: " + r);
         }
         currentFlagPos = r;
     }
@@ -98,8 +89,7 @@ public class FlagController : MonoBehaviour
     private void ShowFlag()
     {
         nrFlagsShown ++;
-
-        Debug.Log("Nr flags show: " + nrFlagsShown);
+        //Debug.Log("Nr flags show: " + nrFlagsShown);
 
         SpriteRenderer spriteRenderer = GetComponent <SpriteRenderer>();
         // spriteRenderer.color = ColorPicker();
@@ -107,7 +97,7 @@ public class FlagController : MonoBehaviour
 
         transform.position = flagPosition[currentFlagPos].position;
 
-        //TODO Spara vilken flagga som visades i flaglistan
+        //Save what flag gets shown in FO
         flagOrganizer.UpdateFlagList(currentFlagPos);
     }
 
@@ -115,7 +105,6 @@ public class FlagController : MonoBehaviour
     {
         switch (currentFlagPos)
         {
-
             case 0:
                 return flag1Sprite;
             case 1:
@@ -129,34 +118,13 @@ public class FlagController : MonoBehaviour
         }
     }
 
-    //private Color ColorPicker()
-    //{
-    //    switch (currentFlagPos)
-    //    {
-
-    //        case 0:
-    //            return Color.yellow;
-    //        case 1:
-    //            return Color.green;
-    //        case 2:
-    //            return Color.blue;
-    //        case 3:
-    //            return Color.red;
-    //        default:
-    //            return Color.cyan;
-    //    }
-    //}
-
     private void DestroyFlag()
     {
-
        // Debug.Log("Trying to remove flag");
-        //TODO berätta för flagorganizer/GM att vi är klara
 
         //gameObject.SetActive(false);
-
+        //Destroy the flag object
         Destroy(gameObject);
-        //TODO Destoy så det inte ligger massa flaggor kvar
         //GameObject flag = transform.parent.gameObject;
         //Debug.Log(flag);
         //Destroy(flag);

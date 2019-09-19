@@ -14,7 +14,7 @@ public class LivesController : MonoBehaviour
     private int startLives = 3;
     private float lifeDistance = 1.0f;
 
-    //instanciate from gamemanager
+    //instantiate from gamemanager
     public void CreateLives()
     {
         //find the sample life
@@ -65,7 +65,7 @@ public class LivesController : MonoBehaviour
         //Destroy the last life in the list
         Destroy(life);
 
-        //Still alive
+        //still alive
         return true;
     }
 }
